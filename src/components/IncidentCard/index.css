@@ -1,0 +1,16 @@
+.incident-card{
+    height: 250px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.incident-card:hover{
+    background-color: aliceblue;
+    transform: 0.5;
+}

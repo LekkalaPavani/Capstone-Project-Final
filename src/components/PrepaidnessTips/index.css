@@ -1,0 +1,70 @@
+.tips-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.tips-card-con{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    
+}
+.tips-card1{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    width: 20%;
+    height: 60%;
+    background-color: #1457c3;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; 
+   
+  
+
+
+}
+.tips-card2{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    width: 20%;
+    height: 50%;
+    background-color: #1666fb;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; 
+   
+
+}
+.tips-card3{
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    width: 20%;
+    height: 50%;
+    background-color: #81b1fa;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; 
+
+
+}
+.heading-tips{
+    font-size: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+
+.tips-card1:hover, .tips-card2:hover, .tips-card3:hover {
+    transform: translateY(-5px) scale(1.02); /* Subtle hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}

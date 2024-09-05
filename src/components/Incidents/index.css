@@ -1,0 +1,52 @@
+.view-incident-con{
+    display: flex;
+    height: auto;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 83%;
+    margin-left: 17%;
+    /* background-color: aliceblue; */
+}
+
+.cards-sec{
+    height:auto;
+    width: 83%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    /* justify-content: ; */
+    /* box-sizing: content-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  transition: transform 0.3s;
+  /* background-color: white; */
+
+
+    /* margin-left: 18%;
+    position: relative;
+    padding-left: 30px; */
+
+  
+}
+.filter-section{
+ 
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.filter-group{
+    margin: 20px;
+    padding: 10px;
+}
+.filter-group label {
+    margin-bottom: 5px; /* Spacing between label and select */
+  }
+  
+  .filter-group select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

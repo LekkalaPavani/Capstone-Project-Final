@@ -1,0 +1,80 @@
+
+.sidebar {
+  width: 17%;
+  background-color:#0b254e; 
+  padding: 20px;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column; 
+  align-items:flex-start; 
+  position: fixed;
+}
+
+
+
+.logo-h1 {
+ 
+  margin-bottom: 10px; 
+  color: white;
+  font-family: "Risque", serif;
+  font-size: 20px;
+  font-weight: 500;
+  flex-wrap: nowrap;
+  
+}
+
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.menu li {
+  width: 100%; 
+  /* padding: 10px 0; */
+  text-align: left; 
+  display: flex; 
+  align-items: center; 
+  font-weight: bold;
+  flex-wrap: nowrap;
+}
+
+.menu-link {
+  color: white; 
+  text-decoration: none; 
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+  transition: background-color 0.3s; 
+}
+.menu-link:hover {
+  background-color: white; 
+  box-shadow: 10px;
+  border-radius: 10px;
+  color: black;
+}
+.menu-link:active{
+  background-color:white;
+  color: black;
+  box-shadow: 10px;
+  border-radius: 10px;
+}
+.menu-icon {
+  font-size: 18px; 
+  margin: 10px;
+}
+.logout-button{
+  top: 82%;
+  left:50px;
+  position: absolute;
+  background-color: white;
+  color: #06c;
+  font-size: 20px;
+  padding: 12px;
+  width: 50%;
+  border-radius: 10px;
+}
+

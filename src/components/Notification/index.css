@@ -1,0 +1,73 @@
+/* Notification Page Container */
+.notification-container {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 83%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* padding-left: 20px; */
+ margin-left: 20%;
+
+}
+
+/* Notification Heading */
+.notification-container h2 {
+    text-align: center;
+    color:black;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Notification List */
+.notification-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Notification Item Style */
+.notification-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: black;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.notification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Notification Message */
+.notification-item p {
+    font-size: 17px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Notification Map Link */
+.notification-item a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.notification-item a:hover {
+    text-decoration: underline;
+}
+
+/* No Notifications Available Message */
+.notification-container p {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}

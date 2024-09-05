@@ -1,0 +1,103 @@
+.container-app {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height:200vh;
+  width: 100%;
+  
+}
+.dashboard-con{
+  width: 83%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* padding-left: 20px; */
+ margin-left: 17%;
+ height: auto;
+
+}
+ .cards-con{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 40px;
+
+
+ }  
+
+.map-con{
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  /* align-items: center; */
+ margin-right:20px;
+ width: 80%;
+ margin-bottom: 20px;
+
+    /* align-items: center; */
+  }
+  .sum-head{
+    padding: 10px;
+  }
+  .summary{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: 100px;
+    padding-left: 10px;
+    height: 40px;
+    width: 80%;
+  }
+
+  .volunteer-card {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    width: 20%;
+    height: 80%;
+    background-color: #1457c3;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.volunteer-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    background-color: #0f46a0; /* Change background color on hover */
+}
+
+.inc-attend-card {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    width: 20%;
+    height: 80%;
+    background-color: #1666fb;
+    border-radius: 15px;
+    opacity: 0.8;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.inc-attend-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    background-color: #1253c7; /* Change background color on hover */
+    opacity: 1; /* Make the card fully opaque on hover */
+}
+
+.reward-card {
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  width: 20%;
+  height: 80%;
+  background-color: #81b1fa;
+  border-radius: 15px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.reward-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card */
+  background-color: #679ce6; /* Change background color on hover */
+}
