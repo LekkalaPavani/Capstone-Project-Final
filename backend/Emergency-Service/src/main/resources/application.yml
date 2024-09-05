@@ -1,0 +1,40 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: emergency-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/emergency
+    username: root
+    password: pass@word1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#spring:
+#  application:
+#    name: emergency-service
+#  config:
+#    import:
+#      optional: configserver:http://localhost:8887
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: volunteer-service-group
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+eureka:
+  client:
+    registerWithEureka: true        # Registers this service with the Eureka server
+    fetchRegistry: true             # Fetches the registry from the Eureka server
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  # URL of the Eureka server to connect with
+  instance:
+    hostname: localhost             # The hostname of the instance
+    instance-id: "${spring.application.name}:${instanceId:${random.value}}"  # Instance ID, with dynamic values
