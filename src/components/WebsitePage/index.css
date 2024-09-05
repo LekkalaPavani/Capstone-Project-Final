@@ -1,0 +1,12 @@
+.web-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    /* height: auto;
+    width: auto; */
+    background-size: cover;
+    overflow-x: hidden;
+   
+    
+}

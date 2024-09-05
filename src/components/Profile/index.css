@@ -1,0 +1,100 @@
+.profile-back {
+    font-family: 'Arial', sans-serif;
+    /* background-color: #f8f8f8; */
+    background-image: linear-gradient(#1457c3 50%,white 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-header {
+    position: relative;
+    top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-body {
+    margin-top: -35px;
+}
+
+.profile-name-head {
+    font-size: 40px;
+  margin-bottom: 20px;
+ 
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #161414;
+    font-family:"Roboto";
+}
+
+.profile-location,
+.profile-position,
+.profile-university {
+    font-size: 20px;
+    /* color: #888; */
+    margin: 6px 0;
+    color: #1f1e1e;
+    font-family:"Roboto";
+    opacity: .8;
+    padding: 5px;
+}
+
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    color: #1f1e1e;
+    font-family:"Roboto";
+    font-size: 20px;
+}
+
+.profile-stats div {
+    text-align: center;
+   
+}
+
+.profile-stats strong {
+    display: block;
+    font-size: 18px;
+}
+
+.profile-stats span {
+    color: #1f1e1e;
+    font-family:"Roboto";
+    font-size: 20px;opacity: .8;
+}
+
+/* Hover effect */
+.profile-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Reduced the translateY and scale */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+}
+
+.profile-card:hover .profile-photo {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Softer shadow for profile photo */
+}
