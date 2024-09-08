@@ -1,109 +1,179 @@
 .profile-back {
-    font-family: 'Arial', sans-serif;
-    /* background-color: #f8f8f8; */
-    background-image: linear-gradient(#1457c3 50%,white 50%);
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(135deg, #1457c3 0%, #00a0e4 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .profile-card {
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    text-align: center;
-    padding: 20px;
-    width: 80%;
-
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+    padding: 30px;
+    margin-top: 60px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Added for better positioning */
 }
 
 .profile-header {
     position: relative;
-    top: -50px;
-    display: flex;
-    justify-content: center;
+    top: -80px;
+    margin-bottom: -60px;
+    text-align: center; /* Centered the header content */
 }
 
 .profile-photo {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     border: 5px solid white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .profile-body {
-    margin-top: -35px;
+    text-align: center;
 }
 
 .profile-name-head {
-    font-size: 40px;
-  margin-bottom: 20px;
- 
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 5px;
-    color: #161414;
-    font-family:"Roboto";
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .profile-location,
 .profile-position,
 .profile-university {
-    font-size: 20px;
-    /* color: #888; */
-    margin: 6px 0;
-    color: #1f1e1e;
-    font-family:"Roboto";
-    opacity: .8;
-    padding: 5px;
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
 }
-
 
 .profile-stats {
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
-    color: #1f1e1e;
-    font-family:"Roboto";
-    font-size: 20px;
-}
-
-.profile-stats div {
-    text-align: center;
-   
-}
-
-.profile-stats strong {
-    display: block;
-    font-size: 18px;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
 .profile-stats span {
-    color: #1f1e1e;
-    font-family:"Roboto";
-    font-size: 20px;opacity: .8;
+    font-size: 14px;
+    color: #888;
 }
 
-/* Hover effect */
-.profile-card:hover {
-    transform: translateY(-5px) scale(1.02); /* Reduced the translateY and scale */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow */
+.profile-input,
+.profile-select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-.profile-card:hover .profile-photo {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Softer shadow for profile photo */
+.profile-select {
+    background-color: white;
 }
-.status-sec{
+
+.status-sec,
+.edit-save-sec {
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-self: flex-end;
-    width: 250px;
-    align-items:space-between;
-    gap:30px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.status-sec button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-sec button:hover {
+    background-color: #45a049;
+}
+
+.edit-save-sec button {
+    background-color: #2196F3;
+    color: white;
+    margin: 0 5px;
+}
+
+.edit-save-sec button:hover {
+    background-color: #1976D2;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Styling for edit mode */
+.profile-card.editing {
+    padding-top: 20px;
+}
+
+.profile-card.editing .profile-header {
+    top: 0;
+    margin-bottom: 20px;
+}
+
+.profile-card.editing .profile-photo {
+    width: 80px;
+    height: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-name-head {
+        font-size: 24px;
+    }
+
+    .profile-location,
+    .profile-position,
+    .profile-university {
+        font-size: 14px;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-stats span {
+        margin: 5px 0;
+    }
+}
+
+/* Additional styling for input fields */
+.profile-input:focus,
+.profile-select:focus {
+    border-color: #2196F3; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button hover effect */
+.edit-save-sec button:hover {
+    background-color: #1976D2;
+    transform: scale(1.02); /* Slightly increase size on hover */
 }

@@ -27,7 +27,7 @@ public class VolunteerController {
         return ResponseEntity.ok(volunteer);
     }
 
-    @GetMapping("/allvolunteers")
+    @GetMapping
     public ResponseEntity<List<VolunteerResponse>> getAllVolunteers() {
         return ResponseEntity.ok(volunteerService.getAllVolunteers());
     }
@@ -51,8 +51,8 @@ public class VolunteerController {
 //    }
 
     @PutMapping("update/{volunteerId}")
-    public ResponseEntity<VolunteerResponse> updateVolunteer(@PathVariable Long id, @RequestBody VolunteerDto volunteerDto) {
-        VolunteerResponse updatedVolunteer = volunteerService.updateVolunteer(id, volunteerDto);
+    public ResponseEntity<VolunteerResponse> updateVolunteer(@PathVariable Long volunteerId, @RequestBody VolunteerDto volunteerDto) {
+        VolunteerResponse updatedVolunteer = volunteerService.updateVolunteer(volunteerId, volunteerDto);
         if (updatedVolunteer != null) {
             return ResponseEntity.ok(updatedVolunteer);
         } else {
@@ -62,8 +62,8 @@ public class VolunteerController {
 
 
     @DeleteMapping("delete/{volunteerId}")
-    public ResponseEntity<Void> deleteVolunteer(@PathVariable Long id) {
-        boolean isRemoved = volunteerService.deleteVolunteer(id);
+    public ResponseEntity<Void> deleteVolunteer(@PathVariable Long volunteerId) {
+        boolean isRemoved = volunteerService.deleteVolunteer(volunteerId);
         if (isRemoved) {
             return ResponseEntity.noContent().build();
         } else {
