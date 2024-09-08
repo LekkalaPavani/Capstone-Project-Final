@@ -1,12 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import loadScript from 'load-script';
 
 const MapComponent = ({ onLocationSelect }) => {
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null);
-  const [currentValue, setCurrentValue] = useState(32);
-  let count=0;
+  const [markersData, setMarkersData] = useState([]);
 
   useEffect(() => {
     loadScript(
@@ -40,13 +38,9 @@ const MapComponent = ({ onLocationSelect }) => {
       },
     };
 
-    const addMarkerToMap = (latLng, mapInstance, incidentId) => {
+    const addMarkerToMap = (latLng, mapInstance, incidentData) => {
       const iconImage = document.createElement('img');
       iconImage.src = icons['info'].icon;
-
-      if (marker) {
-        marker.setMap(null);
-      }
 
       const newMarker = new AdvancedMarkerElement({
         map: mapInstance,
@@ -54,58 +48,55 @@ const MapComponent = ({ onLocationSelect }) => {
         content: iconImage,
       });
 
-      newMarker.addListener('click', async () => {
-        try {
-          const response = await fetch(`http://localhost:9999/api/incident/report/${incidentId}`);
-          if (response.ok) {
-            const incidentData = await response.json();
-            const infoWindowContent = `
-              <div>
-                <strong>Contact Name:</strong> ${incidentData.contactName}<br/>
-                <strong>Location:</strong> ${incidentData.location}<br/>
-                <strong>Phone:</strong> ${incidentData.contactPhone}<br/>
-                <strong>Description:</strong> ${incidentData.description}<br/>
-                <strong>Type of Incident:</strong> ${incidentData.typeOfIncident}<br/>
-                <strong>Status:</strong> ${incidentData.status}<br/>
-                <strong>City:</strong> ${incidentData.city}<br/>
-                <strong>Reported At:</strong> ${new Date(incidentData.reportedAt).toLocaleString()}<br/>
-                <img src="${incidentData.photoPath}" alt="Incident Photo" style="width: 100px; height: auto;"/><br/>
-                <a href="${incidentData.mapLink}" target="_blank">View on Map</a>
-              </div>
-            `;
-            const infoWindow = new window.google.maps.InfoWindow({
-              content: infoWindowContent,
-            });
-            infoWindow.open(mapInstance, newMarker);
-          } else {
-            console.error('Failed to fetch incident details:', response.status);
-          }
-        } catch (error) {
-          console.error('Error fetching incident details:', error);
-        }
+      // Create the InfoWindow content using the incident data
+      const infoWindowContent = `
+        <div>
+          <strong>Contact Name:</strong> ${incidentData.contactName}<br/>
+          <strong>Location:</strong> ${incidentData.location}<br/>
+          <strong>Phone:</strong> ${incidentData.contactPhone}<br/>
+          <strong>Description:</strong> ${incidentData.description}<br/>
+          <strong>Type of Incident:</strong> ${incidentData.typeOfIncident}<br/>
+          <strong>Status:</strong> ${incidentData.status}<br/>
+          <strong>City:</strong> ${incidentData.city}<br/>
+          <strong>Reported At:</strong> ${new Date(incidentData.reportedAt).toLocaleString()}<br/>
+          <img src="${incidentData.photoPath}" alt="Incident Photo" style="width: 100px; height: auto;"/><br/>
+          <a href="${incidentData.mapLink}" target="_blank">View on Map</a>
+        </div>
+      `;
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: infoWindowContent,
+      });
+
+      // Attach the InfoWindow to the marker
+      newMarker.addListener('click', () => {
+        infoWindow.open(mapInstance, newMarker);
       });
 
       setMarker(newMarker);
     };
 
-    // Load saved markers from localStorage
-    const savedMarkers = JSON.parse(localStorage.getItem('markers')) || [];
-    savedMarkers.forEach(({ lat, lng, incidentId }) => {
-      const latLng = new window.google.maps.LatLng(lat, lng);
-      addMarkerToMap(latLng, mapInstance, incidentId);
-    });
+    // Load saved markers from database and display the infoWindow with details
+    try {
+      const response = await fetch("http://localhost:9999/api/incident/reports");
+      if (response.ok) {
+        const data = await response.json();
+        setMarkersData(data); // Set the markers data in state
+
+        data.forEach((incident) => {
+          const latLng = new window.google.maps.LatLng(incident.latitude, incident.longitude);
+          // Use the already fetched incident data to display the infoWindowContent
+          addMarkerToMap(latLng, mapInstance, incident);
+        });
+      } else {
+        console.error('Failed to fetch markers from the database:', response.status);
+      }
+    } catch (error) {
+      console.error('Error fetching markers from the database:', error);
+    }
 
     const addMarker = async (event) => {
       const latLng = event.latLng;
-
-      // Generate new incidentId (this could be from a server in a real application)
-      const newIncidentId =  count++;
-
-      const newFeature = {
-        position: latLng,
-        type: 'info',
-        incidentId: newIncidentId,
-      };
 
       if (marker) {
         marker.setMap(null);
@@ -119,43 +110,7 @@ const MapComponent = ({ onLocationSelect }) => {
         icon: icons['info'].icon,
       });
 
-      newMarker.addListener('click', async () => {
-        try {
-          const response = await fetch(`http://localhost:9999/api/incident/report/${newIncidentId}`);
-          if (response.ok) {
-            const incidentData = await response.json();
-            const infoWindowContent = `
-              <div>
-                <strong>Contact Name:</strong> ${incidentData.contactName}<br/>
-                <strong>Location:</strong> ${incidentData.location}<br/>
-                <strong>Phone:</strong> ${incidentData.contactPhone}<br/>
-                <strong>Description:</strong> ${incidentData.description}<br/>
-                <strong>Type of Incident:</strong> ${incidentData.typeOfIncident}<br/>
-                <strong>Status:</strong> ${incidentData.status}<br/>
-                <strong>City:</strong> ${incidentData.city}<br/>
-                <strong>Reported At:</strong> ${new Date(incidentData.reportedAt).toLocaleString()}<br/>
-                <img src="${incidentData.photoPath}" alt="Incident Photo" style="width: 100px; height: auto;"/><br/>
-                <a href="${incidentData.mapLink}" target="_blank">View on Map</a>
-              </div>
-            `;
-            const infoWindow = new window.google.maps.InfoWindow({
-              content: infoWindowContent,
-            });
-            infoWindow.open(mapInstance, newMarker);
-          } else {
-            console.error('Failed to fetch incident details:', response.status);
-          }
-        } catch (error) {
-          console.error('Error fetching incident details:', error);
-        }
-      });
-
       setMarker(newMarker);
-
-      // Save marker to localStorage
-      const currentMarkers = JSON.parse(localStorage.getItem('markers')) || [];
-      currentMarkers.push({ lat: latLng.lat(), lng: latLng.lng(), incidentId: newIncidentId });
-      localStorage.setItem('markers', JSON.stringify(currentMarkers));
 
       // Call the onLocationSelect prop function to update latitude and longitude in the form
       onLocationSelect(latLng.lat(), latLng.lng());
@@ -182,5 +137,3 @@ const MapComponent = ({ onLocationSelect }) => {
 };
 
 export default MapComponent;
-
-
