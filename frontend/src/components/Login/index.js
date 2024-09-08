@@ -45,10 +45,7 @@ const LoginForm = () => {
         Cookies.set("jwt_token", jwtToken);
         Cookies.set("role", userRole);
 
-        const url =
-          userRole === "ADMIN"
-            ? `http://localhost:9999/api/volunteers/by-email/${email}`
-            : `http://localhost:9999/api/volunteers/email/${email}`;
+        const url = `http://localhost:9999/api/volunteers/email/${email}`;
 
         const volunteerResponse = await fetch(url, {
           headers: {
@@ -64,9 +61,9 @@ const LoginForm = () => {
           localStorage.setItem("data",JSON.stringify(data1));
           navigate("/dashboard");
         } else if (volunteerResponse.status === 404) {
-          if (userRole === "VOLUNTEER") {
+         
             navigate("/fill-profile", { state: { email } });
-          }
+         
         } else {
           const errorData = await volunteerResponse.json();
           setErrorMessage(

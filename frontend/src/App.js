@@ -13,7 +13,8 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
-
+import ProtectedRoute from "./components/ProtectedRoute";
+import ViewVolunteers from "./components/ViewVolunteers/index.js";
 
 function App() {
   return (
@@ -25,16 +26,21 @@ function App() {
         <Routes>
           <Route path= "/" element={<WebsitePage/>}/>
           <Route path="/login" element={<LoginForm/>}/>
+          <Route path="/report" element={<IncidentReportForm/>} />
+          <Route path='/view-volunteers' element={<ViewVolunteers/>}/>
+          <Route path="/volunter-register" element={<SignUp/>} />
+          <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/incidents" element={<Incidents/>} />
-          <Route path="/report" element={<IncidentReportForm/>} />
-          <Route path="/volunter-register" element={<SignUp/>} />
+        
           <Route path="/emergency-contacts" element={<EmergencyContacts/>} />
           <Route path="/about" element={<AboutUs/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path="/fill-profile" element={<RegisterVolunteer/>}/>
           <Route  path="/profile/:volunteerId"  element={<Profile/>}/>
           <Route path="/notification/:volunteerId" element={<Notification/>}/>
+          
+          </Route>
           {/* <Route path="/notifications" component={Notifications} /> */}
           </Routes>
       {/* </div> */}

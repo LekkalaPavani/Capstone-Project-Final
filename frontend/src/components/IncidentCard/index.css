@@ -1,16 +1,36 @@
 .incident-card{
-    height: 250px;
-    width: 300px;
+    min-height: 250px;
+    height: auto;
+    width: 250px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin:20px;
+    align-items: flex-start;
+    margin:10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    border-top:1px solid #e1e1e1;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 .incident-card:hover{
     background-color: aliceblue;
     transform: 0.5;
+}
+.head{
+    align-self: center;
+}
+.profile-img{
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.view-volunteer{
+    display: flex;
+    flex-direction: space-between;
+    justify-content:flex-start;
+    align-items: flex-start;
+    width: 100%;
 }

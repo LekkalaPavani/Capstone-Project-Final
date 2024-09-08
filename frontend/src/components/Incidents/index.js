@@ -33,6 +33,7 @@ const Incidents = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log(data);
         setIncidents(data);
         setFilteredIncidents(data); // Initially, filter incidents to include all
       } catch (error) {

@@ -1,28 +1,15 @@
-// // src/components/ProtectedRoute.js
-// import React from 'react';
-// import { Route, Navigate } from 'react-router-dom';
-// import jwt_decode from 'jwt-decode';
-// import Sidebar from './Sidebar';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import Cookies from "js-cookie";
 
-// const ProtectedRoute = ({ element: Component, requiredRole, ...rest }) => {
-//   const token = localStorage.getItem('token');
-//   const user = token ? jwt_decode(token) : null;
+const ProtectedRoute = () => {
+  const token = Cookies.get("jwt_token");
 
-//   return (
-//     <Route
-//       {...rest}
-//       element={
-//         user && (!requiredRole || user.role === requiredRole) ? (
-//           <>
-//             <Sidebar /> {/* Show Sidebar on protected routes */}
-//             <Component />
-//           </>
-//         ) : (
-//           <Navigate to="/login" />
-//         )
-//       }
-//     />
-//   );
-// };
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
 
-// export default ProtectedRoute;
+  return <Outlet />;
+};
+
+export default ProtectedRoute;

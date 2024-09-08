@@ -50,13 +50,8 @@
   padding: 10px 0;
   transition: background-color 0.3s; 
 }
-.menu-link:hover {
-  background-color: white; 
-  box-shadow: 10px;
-  border-radius: 10px;
-  color: black;
-}
-.menu-link:active{
+
+.active{
   background-color:white;
   color: black;
   box-shadow: 10px;

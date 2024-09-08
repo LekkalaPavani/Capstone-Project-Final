@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Sidebar from "../Sidebar";
+import { MdModeEdit } from "react-icons/md";
 import "./index.css"; // CSS file for styling
+import { useLocation,useNavigate } from "react-router-dom";
 
 const EmergencyContacts = () => {
   // State to manage selected state and city
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
+  const location = useLocation();
 
   // Sample emergency contacts data
   const contacts = [
@@ -123,9 +126,8 @@ const EmergencyContacts = () => {
   );
 
   return (
-    // <div className="container-app">
-    //   <Sidebar/>
-    <div className="right-main-sec">
+<>
+    {location.pathname==="/" ?(<div className="right-main-sec">
       <h1>Emergency Services here!</h1>
       <p>@ Please select a state and city to view emergency contacts</p>
       <div className="selector">
@@ -191,8 +193,78 @@ const EmergencyContacts = () => {
           </table>
         )}
       </div>
+    </div>):  ( 
+      <div className="container-app">
+    <Sidebar/>
+  <div className="right-main-sec space-left-em">
+    <h1>Emergency Services here!</h1>
+    <p>@ Please select a state and city to view emergency contacts</p>
+    <div className="selector">
+      <div>
+        <select
+          value={selectedState}
+          onChange={(e) => setSelectedState(e.target.value)}
+        >
+          <option value="">Select State</option>
+          {uniqueStates.map((state, index) => (
+            <option key={index} value={state}>
+              {state}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <select
+          value={selectedCity}
+          onChange={(e) => setSelectedCity(e.target.value)}
+          disabled={!selectedState}
+        >
+          <option value="">Select City</option>
+          {uniqueCities.map((city, index) => (
+            <option key={index} value={city}>
+              {city}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
-    // </div>
+
+    <div
+      className={`emergency-contacts ${
+        selectedState && selectedCity ? "active" : ""
+      }`}
+    >
+      {selectedState && selectedCity && (
+        <table className="contacts-table">
+          <thead>
+            <tr>
+              <th>Service Name</th>
+              <th>Contact Number</th>
+              <th>Address</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredContacts.map((contact, index) => (
+              <tr key={index}>
+                <td>{contact.serviceName}</td>
+                <td>
+                  <a href={`tel:${contact.contactNumber}`}>
+                    {contact.contactNumber}
+                  </a>
+                </td>
+                <td>{contact.address}</td>
+                <td>{contact.location}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  </div>
+  </div>)}
+  </>
   );
 };
 
