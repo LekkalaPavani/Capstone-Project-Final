@@ -27,7 +27,7 @@ public class VolunteerController {
         return ResponseEntity.ok(volunteer);
     }
 
-    @GetMapping
+    @GetMapping("/allvolunteers")
     public ResponseEntity<List<VolunteerResponse>> getAllVolunteers() {
         return ResponseEntity.ok(volunteerService.getAllVolunteers());
     }

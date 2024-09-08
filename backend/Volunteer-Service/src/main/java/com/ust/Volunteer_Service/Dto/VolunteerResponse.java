@@ -13,7 +13,7 @@ public class VolunteerResponse {
     private String address;
     private Long age;
     private String gender;
-
+private String state;
     private String volunteerCity;
 
     private String phoneNumber;

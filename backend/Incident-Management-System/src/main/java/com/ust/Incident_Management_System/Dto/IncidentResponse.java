@@ -23,6 +23,7 @@ public class IncidentResponse {
     private String typeOfIncident;
     private IncidentStatus status;
     private String city;
+    private String state;
     private String photoPath;
     private LocalDateTime reportedAt=LocalDateTime.now();
     private String mapLink= String.format("https://maps.google.com/?q=%s,%s", latitude, longitude);
