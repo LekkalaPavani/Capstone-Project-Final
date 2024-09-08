@@ -110,8 +110,8 @@ const RegisterVolunteer = () => {
   return (
     <div className="register-container">
       <div className="form-container">
-        <h1>Register As Volunteer</h1>
-        <p>We wish to help; you can register here</p>
+        <h1>Complete the profile !</h1>
+        {/* <p>We wish to help; you can register here</p> */}
         <form onSubmit={handleSubmit}>
           <input
             type="text"

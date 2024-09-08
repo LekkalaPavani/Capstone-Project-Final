@@ -23,10 +23,16 @@
 // export default Profile;
 
 import React from 'react';
+import { useState } from 'react';
 import './index.css';
 
 const Profile = () => {
+    const [isAvailable, setIsAvailable] = useState(true);
     const volunteer = JSON.parse(localStorage.getItem('data'));
+
+    const toggleStatus = () => {
+        setIsAvailable(!isAvailable); // Toggle the status
+      };
 
     return (
         <div className='profile-back'>
@@ -61,6 +67,22 @@ const Profile = () => {
 
                 
             </div>
+        </div>
+        <div className='status-sec'>
+            <p>Status</p>
+            <button
+      onClick={toggleStatus}
+      style={{
+        padding: '10px 20px',
+        backgroundColor: isAvailable ? 'green' : 'red',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+      }}
+    >
+      {isAvailable ? 'Available' : 'Not Available'}
+    </button>
         </div>
         </div>
     );

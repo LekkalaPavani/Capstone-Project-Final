@@ -98,3 +98,12 @@
 .profile-card:hover .profile-photo {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Softer shadow for profile photo */
 }
+.status-sec{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: flex-end;
+    width: 250px;
+    align-items:space-between;
+    gap:30px;
+}
